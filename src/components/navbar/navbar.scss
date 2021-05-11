@@ -1,0 +1,78 @@
+@import '../../styles/colors.scss';
+
+
+web-navbar {
+  .block-header-2 {
+    background: $background;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 8px 32px;
+    padding: 0.5rem 2rem;
+    
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .block-header-2--logo img {
+    max-height: 28px;
+    max-height: 2rem
+  }
+  
+  .block-header-2--nav ul {
+    display: none;
+  }
+  
+  .block-header-2 .nav-item {
+    display: inline-block;
+    list-style: none;
+    margin-right: 16px;
+    margin-right: 1rem;
+    font-size: 17px;
+    font-size: 1rem;
+  }
+  
+  .block-header-2 .nav-item.active a {
+    color: $primary
+  }
+  
+  .block-header-2 .nav-item a {
+    text-decoration: none;
+    color: #2b2b2b
+  }
+  
+  .block-header-2 .nav-item a:hover {
+    color: #666
+  }
+  
+  .block-header-2 .nav-item.active a:hover {
+    color: $primary
+  }
+  
+  .block-header-2 .nav-item:last-of-type {
+    margin: 0
+  }
+  
+  .block-header-2--cta {
+    margin-left: 32px;
+    margin-left: 2rem
+  }
+  
+  @media screen and (min-width:700px) {
+    .block-header-2--logo img {
+      max-height: 24px;
+      max-height: 3rem
+    }
+  
+    .block-header-2--nav {
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: baseline;
+      align-items: baseline
+    }
+  }
+}

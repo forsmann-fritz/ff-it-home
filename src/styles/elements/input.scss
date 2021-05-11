@@ -1,0 +1,19 @@
+@import './../colors.scss';
+
+input, .input {
+  color: $font-color;
+  padding: 1rem 0.5rem;
+  border: $border;
+  background: $input-background;
+  border-radius: $border-radius;
+  font-size: 1em;
+}
+
+input:focus, .input:focus {
+  outline: none;
+  border: $border-selected;
+}
+
+label, .label {
+  padding: 0.25rem;
+}

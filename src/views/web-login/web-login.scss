@@ -1,0 +1,14 @@
+@import '../../styles/colors.scss';
+
+web-login {
+  display: flex;
+  justify-content: center;  
+
+  @media only screen and (min-width: 768px) {
+    form {
+      border: $border;
+      border-radius: $border-radius;
+      padding: 2rem;
+    }
+  }
+}

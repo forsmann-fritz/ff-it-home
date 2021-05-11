@@ -1,0 +1,43 @@
+.button, button {
+  outline: 0;
+  border: 0;
+  padding: 12.8px 24px;
+  padding: .6rem 1.2rem;
+  border-radius: .3rem;
+  font-size: 12.8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
+  background: transparent;
+  
+  &:hover {
+    background-color: $selection;
+  }
+}
+
+.button.primary, button.primary {
+  border: 1.5px $primary solid;
+  background-color: $background;
+  color: $font-color-headline;
+
+  &:hover {
+    background-color: $selection;
+  }
+}
+
+.button.small, button.small {
+  font-size: 10px;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  padding: .5rem 1rem;
+}
+
+a {
+  color: $font-color;
+}

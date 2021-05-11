@@ -1,0 +1,69 @@
+import { customElement, html, LitElement, property, query } from "lit-element";
+import { PageMixin } from "../../client-packages/page-mixin/page.mixin";
+import { router } from '../../client-packages/router/router';
+// import userService from "../../services/user.service";
+import './web-login.scss';
+
+@customElement('web-login')
+export default class WebLogin extends PageMixin(LitElement) {
+
+    @query('form')
+    formElement!: HTMLFormElement;
+
+    @query('#email')
+    emailElement!: HTMLInputElement;
+
+    @query('#password')
+    passwordElement!: HTMLInputElement;
+
+    @property({ type: Boolean })loginError = false;
+
+    render() {
+        return html`
+        <form class="w-30 login-form">
+            <section>
+                <label for="email">Email</label>
+                <input type="email" required id="email" placeholder="john@example.com">
+            </section>
+            <section>
+                <label for="password">Password</label>
+                <input type="password" required id="password" placeholder="********">
+            </section>
+            ${
+                this.loginError ?
+                html`
+                    <section class="error">
+                        <span>Error by login. Please check your Email and Password.</span>
+                    </section>
+                    `
+                : null
+                }
+            <section class="actions">
+                <button @click="${this.register}" type="button">Register</button>
+                <button @click="${this.login}" type="submit" class="primary">Login</button>
+            </section>
+        </form>
+     
+        `
+    }
+
+    async login(event: MouseEvent) {
+        event.preventDefault();
+        if (this.formElement.reportValidity()) {
+            
+            try {
+                // await userService.login({
+                //     email: this.emailElement.value,
+                //     password: this.passwordElement.value
+                // });
+                router.navigate('dashboard');
+            } catch(e) {
+                this.loginError = true;
+            }
+        }
+    }
+
+    register() {
+        router.navigate('register');
+    }
+}

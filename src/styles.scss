@@ -1,0 +1,48 @@
+// @import "custom";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap');
+@import './styles/utils.scss';
+@import './styles/colors.scss';
+@import './styles/elements.scss';
+@import './styles/elements/headings.scss';
+@import './styles/elements/button.scss';
+@import './styles/elements/input.scss';
+@import './styles/elements/card.scss';
+@import './styles/elements/details.scss';
+
+
+* {
+    font-family: Montserrat, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html {
+    margin: 0px;
+    height: 100%;
+    font-size: 17px;
+    font-weight: normal;
+    background-color: $background;
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+::-moz-selection {
+    background: $selection;
+    color: #333
+}
+
+::-webkit-selection {
+    background: $selection;
+    color: #333
+}
+
+::selection {
+    background: $selection;
+    color: #333
+}

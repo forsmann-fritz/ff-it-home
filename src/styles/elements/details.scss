@@ -1,0 +1,47 @@
+@import '../colors.scss';
+
+
+details {
+  summary {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color .3s;
+  
+    &:hover {
+      background: darken( $accent-background, 10% );
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  .content {
+    padding: 1rem;
+    border-radius: 0 0 5px 5px;
+  }  
+}
+
+details[open] summary {
+  border-radius: 5px 5px 0 0;
+}
+
+details[open] summary ~ * {
+  animation: sweep .2s ease-in-out;
+}
+
+@keyframes sweep {
+  from {
+    opacity: 0;
+    margin-top: -10px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0;
+  }
+}

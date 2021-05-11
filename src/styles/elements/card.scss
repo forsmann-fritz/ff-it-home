@@ -1,0 +1,25 @@
+@import '../../styles/colors.scss';
+
+/* card styling */
+.outer-card {
+  padding: 1rem 0;
+  overflow: auto;
+
+  @media only screen and (min-width: 768px) {
+    padding: 1rem;
+  }
+}
+.card {
+  // box-shadow: $shadow;
+  border: $border;
+  transition: 0.3s;
+  background-color: $background;
+  border-radius: $border-radius;
+  padding: 1rem;
+  overflow: auto;
+
+  .title {
+    margin: 1rem;
+    margin-top: 0;
+  }
+}
