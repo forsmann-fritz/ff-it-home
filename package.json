@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server ---host 0.0.0.0",
-    "deploy": ""
+    "deploy": "firebase deploy --only hosting:home-ff"
   },
   "author": "VForsmann",
   "license": "MIT",
@@ -33,16 +33,14 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
-    "@feathersjs/authentication-client": "^4.5.11",
-    "@feathersjs/client": "^4.5.11",
-    "@feathersjs/feathers": "^4.5.11",
-    "@feathersjs/rest-client": "^4.5.11",
-    "chart.js": "^2.9.4",
+    "@ionic/cli": "6.11.9",
+    "@ionic/core": "5.3.4",
+    "@vaadin/vaadin-button": "^2.4.0",
+    "@vaadin/vaadin-tabs": "^4.0.0",
+    "firebase": "^8.5.0",
     "lit-element": "*",
-    "lit-element-router": "^2.0.3",
     "mobile-detect": "^1.4.4",
     "nanoid": "^3.1.12",
-    "popper.js": "^1.16.1",
     "pwa-helpers": "^0.9.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8"

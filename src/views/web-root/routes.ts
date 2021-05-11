@@ -1,11 +1,13 @@
 import { html, TemplateResult } from "lit-element";
 
+const routeIndex = 0;
 export interface ROUTE {
     name: string,
     template: TemplateResult,
     onAuthFail: string,
     onAuthSuccess?: string,
-    waitAuthenticationLoading?: boolean
+    waitAuthenticationLoading?: boolean,
+    tabs?: boolean
 }
 
 export function getRoute(name: string): ROUTE {
@@ -16,45 +18,43 @@ export function getRoute(name: string): ROUTE {
 
 export const ROUTES: ROUTE[] = [
     {
-        name: "dashboard",
-        template: html`<web-dashboard></web-dashboard>`,
+        name: "home",
+        template: html`<web-home></web-home>`,
         onAuthFail: "register",
-        waitAuthenticationLoading: true
-    },
-    {
-        name:"portfolio",
-        template: html`<web-portfolio-details></web-portfolio-details>`,
-        onAuthFail: "register",
-        waitAuthenticationLoading: true
+        waitAuthenticationLoading: true,
+        tabs: true
     },
     {
         name: "register",
         template: html`<web-register></web-register>`,
         onAuthFail: "register",
-        onAuthSuccess: "dashboard"
+        onAuthSuccess: "home"
     },
     {
         name: "login",
         template: html`<web-login></web-login>`,
         onAuthFail: "login",
-        onAuthSuccess: "dashboard"
+        onAuthSuccess: "home"
     },
     {
-        name: "configuration",
-        template: html`<web-questionaire></web-questionaire>`,
-        onAuthFail: "register",
-        waitAuthenticationLoading: true
+        name: "history",
+        template: html`<web-history></web-history>`,
+        onAuthFail: "login",
+        onAuthSuccess: "history",
+        tabs: true
     },
     {
-        name: "configuration-result",
-        template: html`<web-questionaire-disclaimer></web-questionaire-disclaimer>`,
-        onAuthFail: "register",
-        waitAuthenticationLoading: true
+        name: "profile",
+        template: html`<web-profile></web-profile>`,
+        onAuthFail: "login",
+        onAuthSuccess: "profile",
+        tabs: true
     },
     {
         name: "",
-        template: html`<web-dashboard></web-dashboard>`,
+        template: html`<web-home></web-home>`,
         onAuthFail: "register",
-        onAuthSuccess: "dashboard",
+        onAuthSuccess: "home",
+        tabs: true
     }
 ]

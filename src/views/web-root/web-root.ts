@@ -5,12 +5,13 @@ import { getRoute } from './routes';
 
 import './web-root.scss';
 import { State } from "../../interfaces/state.interface";
+import { UserService } from "../../services/user.service";
 
 @customElement('web-root')
 export default class WebRoot extends PageMixin(LitElement) {
 
     @internalProperty() isLoggedIn = false;
-    minLoadingScreenTime = 1000;
+    minLoadingScreenTime = 500;
 
     stateChanged(state: State) {
         if(state.user) {
@@ -33,8 +34,8 @@ export default class WebRoot extends PageMixin(LitElement) {
         router.subscribe(() => this.requestUpdate());
         // try login user
         try {
-            throw Error("mockLoginError");
-            // await userService.login();
+            // throw Error("mockLoginError");
+            await UserService.login();
             if(getRoute(router.getPath()).onAuthSuccess) {
                 router.navigate(getRoute(router.getPath()).onAuthSuccess!);
             }
@@ -52,7 +53,7 @@ export default class WebRoot extends PageMixin(LitElement) {
         if(route.waitAuthenticationLoading && !this.isLoggedIn) {
             return html`<web-loading></web-loading>`;
         }
-        return route.template;
+        return html`${route.template}${route.tabs ? html`<web-tabs></web-tabs>` : ``}`
     }
 
 }

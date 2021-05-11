@@ -3,6 +3,7 @@ import { PageMixin } from "../../client-packages/page-mixin/page.mixin";
 import { router } from '../../client-packages/router/router';
 // import userService from "../../services/user.service";
 import './web-register.scss';
+import { UserService } from "../../services/user.service";
 
 @customElement('web-register')
 export default class WebRegister extends PageMixin(LitElement) {
@@ -53,11 +54,10 @@ export default class WebRegister extends PageMixin(LitElement) {
         if (this.formElement.reportValidity()) {
             
             try {
-                // await userService.register({
-                //     email: this.emailElement.value,
-                //     password: this.passwordElement.value,
-                //     country: this.countryElement.value
-                // });
+                await UserService.register({
+                    email: this.emailElement.value,
+                    password: this.passwordElement.value
+                });
             } catch(error) {
                 console.log(error);
                 this.registerError = true;
@@ -65,11 +65,11 @@ export default class WebRegister extends PageMixin(LitElement) {
             }
 
             try {
-                // await userService.login({
-                //     email: this.emailElement.value,
-                //     password: this.passwordElement.value
-                // });
-                router.navigate('configuration');
+                await UserService.login({
+                    email: this.emailElement.value,
+                    password: this.passwordElement.value
+                });
+                router.navigate('dashboard');
             } catch (error) {
                 console.log(error);
                 this.loginError = true;

@@ -1,5 +1,6 @@
 import { customElement, html, LitElement, property } from "lit-element";
 import { PageMixin } from "../../client-packages/page-mixin/page.mixin";
+import logo from '../../../assets/icons/logo.svg';
 
 import './web-loading.scss';
 
@@ -10,12 +11,16 @@ export default class WebLoading extends PageMixin(LitElement) {
     render() {
         return html`
         <div class="container">
-            <div class = "centered">
-                <div class = "blob-1"></div>
-                <div class = "blob-2"></div>
+            <img src="${logo}" alt="Portfoio" class="logo">
+            <br>
+            <br>
+            <div class="loading">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
-            
-            <p>${this.text}</p>
         </div>
         `;
     }

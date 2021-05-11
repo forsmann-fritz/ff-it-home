@@ -3,7 +3,9 @@ import { PageMixin } from "../../client-packages/page-mixin/page.mixin";
 import { router } from "../../client-packages/router/router";
 import { State } from "../../interfaces/state.interface";
 import { clearStore, store } from "../../redux/store";
+import logo from '../../../assets/icons/logo.svg';
 import './navbar.scss';
+import { UserService } from "../../services/user.service";
 
 @customElement('web-navbar')
 export class WebNavbar extends PageMixin(LitElement) {
@@ -27,7 +29,7 @@ export class WebNavbar extends PageMixin(LitElement) {
 
       <div class="block-header-2--logo">
         <a href="http://localhost:4000">
-          <img src="../../../assets/icons/logo.svg" alt="Portfoio" class="logo">
+          <img src="${logo}" alt="Portfoio" class="logo">
         </a>
       </div>
 
@@ -52,9 +54,10 @@ export class WebNavbar extends PageMixin(LitElement) {
   }
 
   logout() {
+    UserService.logout();
     window.localStorage.clear();
     store.dispatch(clearStore());
-    router.navigate("/register");
+    router.navigate("/login");
   }
 
 }

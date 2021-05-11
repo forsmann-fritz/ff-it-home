@@ -3,6 +3,7 @@ import { PageMixin } from "../../client-packages/page-mixin/page.mixin";
 import { router } from '../../client-packages/router/router';
 // import userService from "../../services/user.service";
 import './web-login.scss';
+import { UserService } from "../../services/user.service";
 
 @customElement('web-login')
 export default class WebLogin extends PageMixin(LitElement) {
@@ -50,12 +51,11 @@ export default class WebLogin extends PageMixin(LitElement) {
     async login(event: MouseEvent) {
         event.preventDefault();
         if (this.formElement.reportValidity()) {
-            
             try {
-                // await userService.login({
-                //     email: this.emailElement.value,
-                //     password: this.passwordElement.value
-                // });
+                await UserService.login({
+                    email: this.emailElement.value,
+                    password: this.passwordElement.value
+                });
                 router.navigate('dashboard');
             } catch(e) {
                 this.loginError = true;

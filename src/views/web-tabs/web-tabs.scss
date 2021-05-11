@@ -1,0 +1,14 @@
+web-tabs {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-top: 1px solid lightgray;
+
+    vaadin-tabs {
+        width: 100%;
+        vaadin-tab {
+            width: 33%;
+        }
+    }
+}
