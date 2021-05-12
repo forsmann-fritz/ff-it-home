@@ -7,5 +7,6 @@ export interface RegisterCredentials extends LoginCredentials {
 }
 
 export interface User extends RegisterCredentials {
-    
+    uid: string,
+    role: "ADMIN" | "NOPERMISSION" | "USER"
 }

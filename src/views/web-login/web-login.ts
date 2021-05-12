@@ -40,11 +40,10 @@ export default class WebLogin extends PageMixin(LitElement) {
                 : null
                 }
             <section class="actions">
-                <button @click="${this.register}" type="button">Register</button>
-                <button @click="${this.login}" type="submit" class="primary">Login</button>
+                <vaadin-button @click="${this.register}" type="button" class="secondary">To Register</vaadin-button>
+                <vaadin-button @click="${this.login}" type="submit" class="primary">Login</vaadin-button>
             </section>
         </form>
-     
         `
     }
 
@@ -56,7 +55,7 @@ export default class WebLogin extends PageMixin(LitElement) {
                     email: this.emailElement.value,
                     password: this.passwordElement.value
                 });
-                router.navigate('dashboard');
+                router.navigate('home');
             } catch(e) {
                 this.loginError = true;
             }

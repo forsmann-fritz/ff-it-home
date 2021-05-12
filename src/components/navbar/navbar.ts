@@ -49,7 +49,7 @@ export class WebNavbar extends PageMixin(LitElement) {
 
   getLogedIn() {
     return html`
-      <a class="button primary small block-header-2--cta" @click="${this.logout}">Logout</a>
+      <vaadin-button class="block-header-2--cta" @click="${this.logout}">Logout</vaadin-button>
     `;
   }
 

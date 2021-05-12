@@ -41,8 +41,9 @@ export default class WebRegister extends PageMixin(LitElement) {
                 : null
                 }
             <section class="actions">
-                <button @click="${this.login}" type="button">Login</button>
-                <button @click="${this.register}" type="submit" class="primary">Register</button>
+                <vaadin-button @click="${this.login}" class="secondary">To Login</vaadin-button>
+                <vaadin-button @click="${this.register}" type="button" type="submit">Register</vaadin-button>
+
             </section>
         </form>
      
@@ -58,25 +59,21 @@ export default class WebRegister extends PageMixin(LitElement) {
                     email: this.emailElement.value,
                     password: this.passwordElement.value
                 });
+                try {
+                    await UserService.login({
+                        email: this.emailElement.value,
+                        password: this.passwordElement.value
+                    });
+                    router.navigate('home');
+                } catch (error) {
+                    console.log(error);
+                    this.loginError = true;
+                }
             } catch(error) {
                 console.log(error);
                 this.registerError = true;
                 return;
             }
-
-            try {
-                await UserService.login({
-                    email: this.emailElement.value,
-                    password: this.passwordElement.value
-                });
-                router.navigate('dashboard');
-            } catch (error) {
-                console.log(error);
-                this.loginError = true;
-            }
-
-
-
         }
     }
 

@@ -5,6 +5,10 @@ import { defineCustomElements } from "@ionic/core/loader";
 
 import '@vaadin/vaadin-tabs';
 import '@vaadin/vaadin-button';
+import '@vaadin/vaadin-accordion';
+import '@vaadin/vaadin-list-box';
+import '@vaadin/vaadin-item';
+import '@vaadin/vaadin-grid';
 
 import "./firebase";
 

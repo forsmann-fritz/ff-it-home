@@ -35,7 +35,11 @@
   "dependencies": {
     "@ionic/cli": "6.11.9",
     "@ionic/core": "5.3.4",
+    "@vaadin/vaadin-accordion": "^1.2.0",
     "@vaadin/vaadin-button": "^2.4.0",
+    "@vaadin/vaadin-grid": "^6.0.2",
+    "@vaadin/vaadin-item": "^3.0.0",
+    "@vaadin/vaadin-list-box": "^2.0.0",
     "@vaadin/vaadin-tabs": "^4.0.0",
     "firebase": "^8.5.0",
     "lit-element": "*",

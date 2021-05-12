@@ -1,0 +1,14 @@
+web-history {
+    vaadin-grid {
+        --_lumo-grid-border-width: 0px;
+        height: 100%;
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 600px) {
+        vaadin-grid-cell-content {
+            font-size: 15px;
+        }
+      }
+
+}
