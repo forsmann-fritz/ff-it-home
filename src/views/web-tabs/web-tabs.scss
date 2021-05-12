@@ -5,10 +5,15 @@ web-tabs {
     width: 100%;
     border-top: 1px solid lightgray;
 
+
     vaadin-tabs {
         width: 100%;
+        max-width: 500px;
+        margin: auto;
+        margin-bottom: 5px;
         vaadin-tab {
             width: 33%;
         }
+        box-shadow: none!important;
     }
 }

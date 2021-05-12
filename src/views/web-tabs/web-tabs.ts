@@ -27,10 +27,11 @@ export default class WebTabs extends PageMixin(LitElement) {
     ]
 
     render() {
+        const selected = this.tabs.indexOf(this.tabs.find(tab => router.getPath() === tab.route)!);
         return html`
-            <vaadin-tabs>
+            <vaadin-tabs selected=${selected}>
                 ${this.tabs.map(tab => {
-                    return html`<vaadin-tab @click=${() => this.tabclick(tab)}>${tab.name}</vaadin-tab>`
+                    return html`<vaadin-tab @click=${() => this.tabclick(tab) }>${tab.name}</vaadin-tab>`
                 })}
             </vaadin-tabs>
         `;

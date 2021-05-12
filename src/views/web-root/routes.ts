@@ -1,6 +1,4 @@
 import { html, TemplateResult } from "lit-element";
-
-const routeIndex = 0;
 export interface ROUTE {
     name: string,
     template: TemplateResult,
@@ -41,6 +39,7 @@ export const ROUTES: ROUTE[] = [
         template: html`<web-history></web-history>`,
         onAuthFail: "login",
         onAuthSuccess: "history",
+        waitAuthenticationLoading: true,
         tabs: true
     },
     {
@@ -48,6 +47,7 @@ export const ROUTES: ROUTE[] = [
         template: html`<web-profile></web-profile>`,
         onAuthFail: "login",
         onAuthSuccess: "profile",
+        waitAuthenticationLoading: true,
         tabs: true
     },
     {

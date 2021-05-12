@@ -11,7 +11,7 @@ import { UserService } from "../../services/user.service";
 export default class WebRoot extends PageMixin(LitElement) {
 
     @internalProperty() isLoggedIn = false;
-    minLoadingScreenTime = 500;
+    minLoadingScreenTime = 2000;
 
     stateChanged(state: State) {
         if(state.user) {
