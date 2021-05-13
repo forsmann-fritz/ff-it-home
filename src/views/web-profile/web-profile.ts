@@ -5,20 +5,31 @@ import { store, clearStore } from "../../redux/store";
 import { UserService } from "../../services/user.service";
 import { router } from "../../client-packages/router/router";
 import { User } from "../../interfaces/user.interface";
+import { State } from "../../interfaces/state.interface";
 
 @customElement("web-profile")
 export default class WebProfile extends PageMixin(LitElement) {
     @property() users: User[] = [];
+    @property() user: User | undefined = undefined;
+
+    stateChanged(state: State) {
+        if(state.user) {
+            this.user = state.user;
+            console.log("user changed");
+        } else {
+            this.user = undefined;
+        }
+    }
 
     render() {
         return html`
             <h2>Nutzerdaten</h2>
-            <div><b>E-Mail: </b>${store.getState().user?.email}</div>
-            <div><b>UID: </b><small>${store.getState().user?.uid}</small></div>
-            <div><b>ROLE: </b>${store.getState().user?.role}</div>
+            <div><b>E-Mail: </b>${this.user?.email}</div>
+            <div><b>UID: </b><small>${this.user?.uid}</small></div>
+            <div><b>ROLE: </b>${this.user?.role}</div>
             <br />
             <vaadin-button @click=${this.logout}>Logout</vaadin-button>
-            ${store.getState().user?.role === "ADMIN" ? this.renderAdminControl() : html``}
+            ${this.user?.role === "ADMIN" ? this.renderAdminControl() : html``}
         `;
     }
 

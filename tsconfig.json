@@ -36,7 +36,6 @@
         "name": "typescript-lit-html-plugin"
       }
     ],
-    "typeRoots" : ["node_modules/@types", "src/types"],
-    "include": ["src/components", "src/custom.d.ts"]
+    "typeRoots" : ["node_modules/@types", "src/types"]
   }
 }

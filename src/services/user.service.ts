@@ -3,6 +3,9 @@ import { store } from "../redux/store";
 import { userLogin } from "../redux/actions/user.actions";
 
 class userService {
+
+    loginUserCollection:any = null;
+
     async register(credentials: RegisterCredentials) {
         await window.firebase.auth().setPersistence(window.firebase.auth.Auth.Persistence.LOCAL);
         const { email, password } = credentials;
@@ -22,8 +25,8 @@ class userService {
             try {
                 const userCredentials = await window.firebase.auth().signInWithEmailAndPassword(email, password);
                 const userData = userCredentials.user;
-                const user = await this.get(userData.uid);
-                store.dispatch(userLogin(user));
+                await this.updateUser(userData.uid);
+                this.loginUserCollection.onSnapshot(() => this.updateUser(userData.uid));
             } catch (e) {
                 console.error("LOGIN ERROR");
                 throw e;
@@ -32,8 +35,8 @@ class userService {
             return new Promise((resolve, reject) => {
                 window.firebase.auth().onAuthStateChanged(async (userData: any) => {
                     if (userData) {
-                        const user = await this.get(userData.uid);
-                        store.dispatch(userLogin(user));
+                        const user = await this.updateUser(userData.uid);
+                        this.loginUserCollection.onSnapshot(() => this.updateUser(userData.uid));
                         resolve(user);
                     } else {
                         reject(new Error("AUTO_LOGIN_FAILED"));
@@ -41,6 +44,12 @@ class userService {
                 });
             });
         }
+    }
+
+    async updateUser(uid: string) {
+        const user = await this.get(uid);
+        store.dispatch(userLogin(user));
+        return user;
     }
 
     async logout() {
@@ -62,8 +71,10 @@ class userService {
 
     async get(uid: string): Promise<User> {
         try {
-            const collection = window.db.collection(this.collection);
-            const snapshot = await collection.where("uid", "==", uid).get();
+            const collection = window.db.collection(this.collection).where("uid", "==", uid);
+            this.loginUserCollection = collection;
+            const snapshot = await collection.get();
+            
             if (snapshot.size !== 1) throw new Error("MORE THEN 1 USER FOR THIS EMAIL SAVED!");
             const user = snapshot.docs[0].data();
             return user;
