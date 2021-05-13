@@ -15,7 +15,6 @@ export default class WebProfile extends PageMixin(LitElement) {
     stateChanged(state: State) {
         if(state.user) {
             this.user = state.user;
-            console.log("user changed");
         } else {
             this.user = undefined;
         }
@@ -64,6 +63,7 @@ export default class WebProfile extends PageMixin(LitElement) {
 
     async firstUpdated() {
         this.fetchUsers();
+        UserService.allUserCollection.onSnapshot(() => this.fetchUsers());
     }
 
     async fetchUsers() {

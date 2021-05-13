@@ -5,6 +5,7 @@ import { userLogin } from "../redux/actions/user.actions";
 class userService {
 
     loginUserCollection:any = null;
+    allUserCollection:any = null;
 
     async register(credentials: RegisterCredentials) {
         await window.firebase.auth().setPersistence(window.firebase.auth.Auth.Persistence.LOCAL);
@@ -87,6 +88,7 @@ class userService {
     async find(): Promise<User[]> {
         try {
             const collection = window.db.collection(this.collection);
+            this.allUserCollection = collection;
             const snapshot = await collection.get();
             const users = snapshot.docs.map((doc: any) => {
                 return doc.data();
